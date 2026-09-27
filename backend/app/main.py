@@ -27,7 +27,6 @@ app.add_middleware(
 app.include_router(stations.router, prefix="/api/v1")
 app.include_router(anomalies.router, prefix="/api/v1")
 app.include_router(chatbot.router, prefix="/api/v1")
-app.include_router(satellite.router, prefix="/api/v1")
 
 
 @app.on_event("startup")
