@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 from .core.config import settings
-from .api.v1 import stations, anomalies, chatbot
+from .api.v1 import stations, anomalies, chatbot, satellite
 from .services.anomaly_detector import train_station_model, _models
 from .core.config import settings
 print(f"DEBUG: GROQ key loaded: {settings.GROQ_API_KEY[:10]}... (length: {len(settings.GROQ_API_KEY)})")
@@ -27,6 +27,7 @@ app.add_middleware(
 app.include_router(stations.router, prefix="/api/v1")
 app.include_router(anomalies.router, prefix="/api/v1")
 app.include_router(chatbot.router, prefix="/api/v1")
+app.include_router(satellite.router, prefix="/api/v1")
 
 
 @app.on_event("startup")

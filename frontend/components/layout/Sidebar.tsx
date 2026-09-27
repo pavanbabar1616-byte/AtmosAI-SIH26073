@@ -16,6 +16,7 @@ import {
   Box,
   Database,
   Settings,
+  Satellite,
 } from "lucide-react";
 
 export function Sidebar() {

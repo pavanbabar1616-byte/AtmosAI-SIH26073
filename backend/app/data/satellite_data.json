@@ -1,0 +1,222 @@
+{
+  "AWS001": {
+    "station_id": "AWS001",
+    "station_name": "New Delhi Ridge",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 27.5, "satellite_humidity": 68, "cloud_cover": 15, "confidence": 0.89},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 28.2, "satellite_humidity": 71, "cloud_cover": 22, "confidence": 0.91},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 26.9, "satellite_humidity": 74, "cloud_cover": 35, "confidence": 0.87},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 27.8, "satellite_humidity": 66, "cloud_cover": 18, "confidence": 0.92}
+    ]
+  },
+  "AWS002": {
+    "station_id": "AWS002",
+    "station_name": "Mumbai Colaba",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 28.1, "satellite_humidity": 82, "cloud_cover": 65, "confidence": 0.85},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 27.9, "satellite_humidity": 85, "cloud_cover": 72, "confidence": 0.88},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 28.3, "satellite_humidity": 78, "cloud_cover": 58, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 27.6, "satellite_humidity": 88, "cloud_cover": 80, "confidence": 0.86}
+    ]
+  },
+  "AWS003": {
+    "station_id": "AWS003",
+    "station_name": "Kolkata Alipore",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 28.2, "satellite_humidity": 76, "cloud_cover": 45, "confidence": 0.88},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 27.8, "satellite_humidity": 80, "cloud_cover": 55, "confidence": 0.86},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 28.4, "satellite_humidity": 74, "cloud_cover": 40, "confidence": 0.89},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 28.0, "satellite_humidity": 78, "cloud_cover": 50, "confidence": 0.87}
+    ]
+  },
+  "AWS004": {
+    "station_id": "AWS004",
+    "station_name": "Chennai Nungambakkam",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 30.2, "satellite_humidity": 72, "cloud_cover": 30, "confidence": 0.90},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 30.5, "satellite_humidity": 70, "cloud_cover": 25, "confidence": 0.91},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 29.8, "satellite_humidity": 74, "cloud_cover": 35, "confidence": 0.88},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 30.0, "satellite_humidity": 71, "cloud_cover": 28, "confidence": 0.90}
+    ]
+  },
+  "AWS005": {
+    "station_id": "AWS005",
+    "station_name": "Bengaluru HAL",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 23.8, "satellite_humidity": 62, "cloud_cover": 40, "confidence": 0.89},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 24.1, "satellite_humidity": 60, "cloud_cover": 35, "confidence": 0.90},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 23.5, "satellite_humidity": 65, "cloud_cover": 45, "confidence": 0.87},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 23.9, "satellite_humidity": 63, "cloud_cover": 38, "confidence": 0.89}
+    ]
+  },
+  "AWS006": {
+    "station_id": "AWS006",
+    "station_name": "Hyderabad Begumpet",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 27.0, "satellite_humidity": 58, "cloud_cover": 20, "confidence": 0.90},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 26.8, "satellite_humidity": 60, "cloud_cover": 25, "confidence": 0.89},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 27.2, "satellite_humidity": 56, "cloud_cover": 18, "confidence": 0.91},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 26.9, "satellite_humidity": 59, "cloud_cover": 22, "confidence": 0.90}
+    ]
+  },
+  "AWS007": {
+    "station_id": "AWS007",
+    "station_name": "Pune Shivajinagar",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 25.5, "satellite_humidity": 65, "cloud_cover": 30, "confidence": 0.89},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 25.2, "satellite_humidity": 68, "cloud_cover": 35, "confidence": 0.88},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 25.8, "satellite_humidity": 63, "cloud_cover": 28, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 25.4, "satellite_humidity": 66, "cloud_cover": 32, "confidence": 0.89}
+    ]
+  },
+  "AWS008": {
+    "station_id": "AWS008",
+    "station_name": "Ahmedabad",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 29.9, "satellite_humidity": 50, "cloud_cover": 12, "confidence": 0.91},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 30.2, "satellite_humidity": 48, "cloud_cover": 10, "confidence": 0.92},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 29.7, "satellite_humidity": 52, "cloud_cover": 15, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 30.0, "satellite_humidity": 49, "cloud_cover": 11, "confidence": 0.91}
+    ]
+  },
+  "AWS009": {
+    "station_id": "AWS009",
+    "station_name": "Jaipur",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 29.2, "satellite_humidity": 45, "cloud_cover": 8, "confidence": 0.92},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 29.5, "satellite_humidity": 42, "cloud_cover": 6, "confidence": 0.93},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 28.9, "satellite_humidity": 48, "cloud_cover": 12, "confidence": 0.91},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 29.3, "satellite_humidity": 44, "cloud_cover": 9, "confidence": 0.92}
+    ]
+  },
+  "AWS010": {
+    "station_id": "AWS010",
+    "station_name": "Lucknow Amausi",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 27.1, "satellite_humidity": 62, "cloud_cover": 25, "confidence": 0.90},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 26.8, "satellite_humidity": 65, "cloud_cover": 30, "confidence": 0.89},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 27.4, "satellite_humidity": 60, "cloud_cover": 22, "confidence": 0.91},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 27.0, "satellite_humidity": 63, "cloud_cover": 27, "confidence": 0.90}
+    ]
+  },
+  "AWS011": {
+    "station_id": "AWS011",
+    "station_name": "Bhopal",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 25.9, "satellite_humidity": 68, "cloud_cover": 35, "confidence": 0.89},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 25.6, "satellite_humidity": 71, "cloud_cover": 42, "confidence": 0.87},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 26.1, "satellite_humidity": 66, "cloud_cover": 30, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 25.8, "satellite_humidity": 69, "cloud_cover": 38, "confidence": 0.88}
+    ]
+  },
+  "AWS012": {
+    "station_id": "AWS012",
+    "station_name": "Patna",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 28.3, "satellite_humidity": 72, "cloud_cover": 48, "confidence": 0.88},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 28.0, "satellite_humidity": 75, "cloud_cover": 55, "confidence": 0.86},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 28.5, "satellite_humidity": 70, "cloud_cover": 42, "confidence": 0.89},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 28.2, "satellite_humidity": 73, "cloud_cover": 50, "confidence": 0.87}
+    ]
+  },
+  "AWS013": {
+    "station_id": "AWS013",
+    "station_name": "Guwahati",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 28.5, "satellite_humidity": 80, "cloud_cover": 70, "confidence": 0.85},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 28.2, "satellite_humidity": 83, "cloud_cover": 78, "confidence": 0.83},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 28.7, "satellite_humidity": 77, "cloud_cover": 65, "confidence": 0.86},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 28.4, "satellite_humidity": 81, "cloud_cover": 74, "confidence": 0.84}
+    ]
+  },
+  "AWS014": {
+    "station_id": "AWS014",
+    "station_name": "Shillong",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 21.0, "satellite_humidity": 78, "cloud_cover": 65, "confidence": 0.86},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 20.8, "satellite_humidity": 82, "cloud_cover": 72, "confidence": 0.84},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 21.3, "satellite_humidity": 76, "cloud_cover": 58, "confidence": 0.88},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 21.1, "satellite_humidity": 79, "cloud_cover": 68, "confidence": 0.86}
+    ]
+  },
+  "AWS015": {
+    "station_id": "AWS015",
+    "station_name": "Leh",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 10.2, "satellite_humidity": 35, "cloud_cover": 10, "confidence": 0.93},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 10.5, "satellite_humidity": 32, "cloud_cover": 8, "confidence": 0.94},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 9.8, "satellite_humidity": 38, "cloud_cover": 12, "confidence": 0.92},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 10.1, "satellite_humidity": 34, "cloud_cover": 9, "confidence": 0.93}
+    ]
+  },
+  "AWS016": {
+    "station_id": "AWS016",
+    "station_name": "Shimla",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 14.5, "satellite_humidity": 62, "cloud_cover": 40, "confidence": 0.88},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 14.2, "satellite_humidity": 65, "cloud_cover": 48, "confidence": 0.86},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 14.8, "satellite_humidity": 60, "cloud_cover": 35, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 14.6, "satellite_humidity": 63, "cloud_cover": 42, "confidence": 0.88}
+    ]
+  },
+  "AWS017": {
+    "station_id": "AWS017",
+    "station_name": "Dehradun",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 24.0, "satellite_humidity": 68, "cloud_cover": 45, "confidence": 0.88},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 23.7, "satellite_humidity": 71, "cloud_cover": 52, "confidence": 0.86},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 24.3, "satellite_humidity": 66, "cloud_cover": 38, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 24.1, "satellite_humidity": 69, "cloud_cover": 44, "confidence": 0.88}
+    ]
+  },
+  "AWS018": {
+    "station_id": "AWS018",
+    "station_name": "Bhubaneswar",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 27.5, "satellite_humidity": 76, "cloud_cover": 55, "confidence": 0.87},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 27.2, "satellite_humidity": 79, "cloud_cover": 62, "confidence": 0.85},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 27.8, "satellite_humidity": 74, "cloud_cover": 48, "confidence": 0.88},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 27.6, "satellite_humidity": 77, "cloud_cover": 58, "confidence": 0.86}
+    ]
+  },
+  "AWS019": {
+    "station_id": "AWS019",
+    "station_name": "Raipur",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 26.8, "satellite_humidity": 68, "cloud_cover": 40, "confidence": 0.88},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 26.5, "satellite_humidity": 71, "cloud_cover": 46, "confidence": 0.86},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 27.1, "satellite_humidity": 66, "cloud_cover": 35, "confidence": 0.90},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 26.9, "satellite_humidity": 69, "cloud_cover": 42, "confidence": 0.88}
+    ]
+  },
+  "AWS020": {
+    "station_id": "AWS020",
+    "station_name": "Thiruvananthapuram",
+    "satellite_source": "INSAT-3DR",
+    "observations": [
+      {"timestamp": "2026-09-20T12:00:00Z", "satellite_temp": 26.5, "satellite_humidity": 78, "cloud_cover": 60, "confidence": 0.86},
+      {"timestamp": "2026-09-21T12:00:00Z", "satellite_temp": 26.2, "satellite_humidity": 82, "cloud_cover": 70, "confidence": 0.84},
+      {"timestamp": "2026-09-22T12:00:00Z", "satellite_temp": 26.8, "satellite_humidity": 76, "cloud_cover": 55, "confidence": 0.88},
+      {"timestamp": "2026-09-23T12:00:00Z", "satellite_temp": 26.6, "satellite_humidity": 79, "cloud_cover": 64, "confidence": 0.86}
+    ]
+  }
+}

@@ -27,6 +27,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.datasets": "Datasets",
     "nav.settings": "Settings",
     "nav.classification": "Classification: Prototype",
+    "nav.satellite": "Satellite Validation",
 
     // TopBar
     "top.lastIngest": "Last Ingest Stamp",
@@ -108,6 +109,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.datasets": "डेटासेट",
     "nav.settings": "सेटिंग्स",
     "nav.classification": "वर्गीकरण: प्रोटोटाइप",
+    "nav.satellite": "उपग्रह सत्यापन",
 
     "top.lastIngest": "अंतिम डेटा प्राप्ति",
 
@@ -184,6 +186,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     "nav.datasets": "डेटासेट्स",
     "nav.settings": "सेटिंग्ज",
     "nav.classification": "वर्गीकरण: प्रोटोटाइप",
+    "nav.satellite": "उपग्रह पडताळणी",
 
     "top.lastIngest": "शेवटचा डेटा प्राप्ती",
 
