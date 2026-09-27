@@ -1,5 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+// ============ TYPES ============
 export interface Station {
   station_id: string;
   name: string;
@@ -92,55 +93,79 @@ export interface AnomalyDetail {
   data_index: number;
 }
 
+// ============ SATELLITE TYPES ============
+export interface SatelliteSource {
+  id: string;
+  name: string;
+  agency: string;
+  type: string;
+  products: string[];
+  active: boolean;
+}
+
+export interface SatelliteValidation {
+  timestamp: string;
+  aws_temperature: number | null;
+  aws_humidity: number | null;
+  satellite_temperature: number;
+  satellite_humidity: number;
+  cloud_cover: number;
+  temp_deviation: number | null;
+  humidity_deviation: number | null;
+  verdict: string;
+  confidence: number;
+  reason: string;
+}
+
+export interface SatelliteStation {
+  station_id: string;
+  station_name: string;
+  satellite_source: string;
+  status: string;
+  summary: {
+    total_comparisons: number;
+    validated: number;
+    sensor_faults: number;
+    uncertain: number;
+    validation_rate: number;
+  };
+  validations: SatelliteValidation[];
+}
+
+export interface SatelliteOverview {
+  satellite_sources: string[];
+  stations_covered: number;
+  total_comparisons: number;
+  validated: number;
+  sensor_faults: number;
+  uncertain: number;
+  overall_validation_rate: number;
+  station_summaries: Array<{
+    station_id: string;
+    station_name: string;
+    validation_rate: number;
+    sensor_faults: number;
+    total_comparisons: number;
+  }>;
+}
+
+// ============ REQUEST HELPER ============
 const BASE_HEADERS = {
   "Content-Type": "application/json",
   "ngrok-skip-browser-warning": "true",
 };
 
 async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers: { ...BASE_HEADERS, ...options?.headers },
-  });
-  if (!res.ok) throw new Error(`API error: ${res.statusText}`);
-  return res.json();
-}
-
-export const api = {
-  getHealth: () => request<{ status: string; stations_trained: number }>("/health"),
-  getStations: () => request<Station[]>("/api/v1/stations"),
-  getStation: (id: string) => request<Station>(`/api/v1/stations/${id}`),
-  getStationData: (id: string, hours = 48) =>
-    request<WeatherReading[]>(`/api/v1/stations/${id}/data?hours=${hours}`),
-  getAnomalies: (limit = 50) => request<Anomaly[]>(`/api/v1/anomalies?limit=${limit}`),
-  getStats: () => request<DashboardStats>("/api/v1/anomalies/stats/summary"),
-  getAnomalyDetail: (stationId: string, index: number) =>
-    request<AnomalyDetail>(`/api/v1/anomalies/${stationId}/${index}`),
-  chat: (message: string, history: { role: string; content: string }[] = [], context?: any) =>
-    request<{ reply: string; error: string | null }>("/api/v1/chatbot/chat", {
-      method: "POST",
-      body: JSON.stringify({ message, history, context }),
-    }),
-};
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
-async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 70000); // 70s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 70000); // 70s for cold starts
 
   try {
     const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       signal: controller.signal,
-      headers: {
-        "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true",
-        ...options?.headers,
-      },
+      headers: { ...BASE_HEADERS, ...options?.headers },
     });
     clearTimeout(timeoutId);
-
     if (!response.ok) throw new Error(`API error: ${response.statusText}`);
     return response.json();
   } catch (err) {
@@ -148,3 +173,50 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
     throw err;
   }
 }
+
+// ============ API METHODS ============
+export const api = {
+  // Health
+  getHealth: () =>
+    request<{ status: string; stations_trained: number; groq_configured: boolean }>(
+      "/health"
+    ),
+
+  // Stations
+  getStations: () => request<Station[]>("/api/v1/stations"),
+  getStation: (id: string) => request<Station>(`/api/v1/stations/${id}`),
+  getStationData: (id: string, hours = 48) =>
+    request<WeatherReading[]>(`/api/v1/stations/${id}/data?hours=${hours}`),
+
+  // Anomalies
+  getAnomalies: (limit = 50) =>
+    request<Anomaly[]>(`/api/v1/anomalies?limit=${limit}`),
+  getStats: () =>
+    request<DashboardStats>("/api/v1/anomalies/stats/summary"),
+  getAnomalyDetail: (stationId: string, index: number) =>
+    request<AnomalyDetail>(`/api/v1/anomalies/${stationId}/${index}`),
+
+  // Chatbot
+  chat: (
+    message: string,
+    history: { role: string; content: string }[] = [],
+    context?: any
+  ) =>
+    request<{ reply: string; error: string | null }>("/api/v1/chatbot/chat", {
+      method: "POST",
+      body: JSON.stringify({ message, history, context }),
+    }),
+
+  getChatbotStatus: () =>
+    request<{ configured: boolean; model: string }>("/api/v1/chatbot/status"),
+
+  // ============ SATELLITE ============
+  getSatelliteSources: () =>
+    request<{ sources: SatelliteSource[] }>("/api/v1/satellite/sources"),
+
+  getSatelliteOverview: () =>
+    request<SatelliteOverview>("/api/v1/satellite/overview"),
+
+  getSatelliteStation: (stationId: string) =>
+    request<SatelliteStation>(`/api/v1/satellite/station/${stationId}`),
+};
