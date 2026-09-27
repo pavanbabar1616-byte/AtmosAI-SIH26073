@@ -122,3 +122,29 @@ export const api = {
       body: JSON.stringify({ message, history, context }),
     }),
 };
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 70000); // 70s timeout
+
+  try {
+    const response = await fetch(`${API_URL}${endpoint}`, {
+      ...options,
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true",
+        ...options?.headers,
+      },
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) throw new Error(`API error: ${response.statusText}`);
+    return response.json();
+  } catch (err) {
+    clearTimeout(timeoutId);
+    throw err;
+  }
+}
