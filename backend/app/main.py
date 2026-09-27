@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 from .core.config import settings
-from .api.v1 import stations, anomalies, chatbot, satellite
+from .api.v1 import stations, anomalies, chatbot
 from .services.anomaly_detector import train_station_model, _models
 from .core.config import settings
 print(f"DEBUG: GROQ key loaded: {settings.GROQ_API_KEY[:10]}... (length: {len(settings.GROQ_API_KEY)})")
