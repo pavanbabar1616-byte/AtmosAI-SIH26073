@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Shield, Zap, Database } from "lucide-react";
+
 import { PageHeader } from "@/components/layout/PageHeader";
+import { Brain, Shield, Zap, Database, Satellite } from "lucide-react";
 
 const features = [
   {
@@ -68,6 +69,45 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-2 gap-4">
           {features.map((f, i) => {
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="panel p-8"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <Satellite className="w-5 h-5 text-amber-500" />
+                  <h2 className="font-serif text-2xl font-bold">Satellite Validation Layer</h2>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                  AtmosAI cross-validates AWS sensor readings against satellite-derived observations from
+                  ISRO&apos;s INSAT-3DR and NASA&apos;s MODIS. This provides independent verification that
+                  distinguishes genuine weather events from sensor faults.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                  {[
+                    { title: "Independent Validation", desc: "External data source verifies AWS sensor readings." },
+                    { title: "Wider Coverage", desc: "Observes areas beyond individual station footprints." },
+                    { title: "Better Fault Detection", desc: "Distinguishes sensor faults from real weather." },
+                    { title: "Spatial Context", desc: "Compares patterns across regions and stations." },
+                    { title: "Early Event Detection", desc: "Identifies developing conditions before they peak." },
+                    { title: "Reduced False Alarms", desc: "Cross-checking multiple sources eliminates noise." },
+                  ].map((f) => (
+                    <div key={f.title} className="p-4 rounded-md bg-muted/30 border border-border">
+                      <h4 className="font-semibold text-sm mb-1">{f.title}</h4>
+                      <p className="text-xs text-muted-foreground">{f.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-4 rounded-md bg-amber-600/5 border border-amber-600/30">
+                  <p className="micro-label mb-2">Upgraded Approach</p>
+                  <p className="text-sm font-mono">
+                    AWS Sensors + AI/ML + Spatial Intelligence + Satellite Validation + Explainable AI
+                  </p>
+                </div>
+              </motion.div>
             const Icon = f.icon;
             return (
               <motion.div

@@ -44,6 +44,15 @@ export function Sidebar() {
         { href: "/anomalies", label: t("nav.anomalies"), icon: AlertTriangle },
         { href: "/alerts", label: t("nav.alerts"), icon: Bell },
         { href: "/sensor-health", label: t("nav.sensorHealth"), icon: HeartPulse },
+        { href: "/satellite", label: t("nav.satellite"), icon: Satellite },
+      ],
+    },
+    {
+      label: t("nav.watch"),
+      items: [
+        { href: "/anomalies", label: t("nav.anomalies"), icon: AlertTriangle },
+        { href: "/alerts", label: t("nav.alerts"), icon: Bell },
+        { href: "/sensor-health", label: t("nav.sensorHealth"), icon: HeartPulse },
       ],
     },
     {
