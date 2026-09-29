@@ -3,21 +3,21 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 from .core.config import settings
-from .api.v1 import stations, anomalies, chatbot, satellite
+from .api.v1 import stations, anomalies, chatbot, satellite, xai, simulation
 from .services.anomaly_detector import train_station_model, _models
-from .core.config import settings
-print(f"DEBUG: GROQ key loaded: {settings.GROQ_API_KEY[:10]}... (length: {len(settings.GROQ_API_KEY)})")
-from .api.v1 import stations, anomalies, chatbot, satellite, simulation, xai
-app.include_router(xai.router, prefix="/api/v1")
 
+# ============================================================
+# Create FastAPI app FIRST — before any include_router calls
+# ============================================================
 app = FastAPI(
-    title="AtmosAi — SIH26073",
+    title="AtmosAI — SIH26073",
     version="1.0.0",
     description="AI-Powered Anomaly Detection for India's Automatic Weather Stations",
 )
-from .core.config import settings
-print(f"🔑 GROQ_KEY loaded: '{settings.GROQ_API_KEY[:15]}...' (length: {len(settings.GROQ_API_KEY)})")
-print(f"🤖 Model: {settings.GROQ_MODEL}")
+
+# ============================================================
+# CORS
+# ============================================================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -26,15 +26,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ============================================================
+# Routers
+# ============================================================
 app.include_router(stations.router, prefix="/api/v1")
 app.include_router(anomalies.router, prefix="/api/v1")
 app.include_router(chatbot.router, prefix="/api/v1")
 app.include_router(satellite.router, prefix="/api/v1")
+app.include_router(xai.router, prefix="/api/v1")
+app.include_router(simulation.router, prefix="/api/v1")
 
 
+# ============================================================
+# Startup — train station models
+# ============================================================
 @app.on_event("startup")
 async def startup_train_models():
-    """Train Isolation Forest models on startup."""
     data_dir = os.path.join(os.path.dirname(__file__), "data")
     try:
         with open(os.path.join(data_dir, "weather_data.json")) as f:
@@ -49,6 +56,9 @@ async def startup_train_models():
         print(f"⚠️ Startup training failed: {e}")
 
 
+# ============================================================
+# Root + health
+# ============================================================
 @app.get("/")
 def root():
     return {
