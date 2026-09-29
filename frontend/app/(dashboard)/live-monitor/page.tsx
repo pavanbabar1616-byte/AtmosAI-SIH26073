@@ -14,9 +14,9 @@ import {
 
 interface LiveReading {
   timestamp: string;
-  temperature: number;
-  pressure: number;
-  humidity: number;
+  temperature: number | null;
+  pressure: number | null;
+  humidity: number | null;
   is_anomaly: boolean;
   anomaly_type: string | null;
 }
@@ -30,25 +30,22 @@ export default function LiveMonitorPage() {
   const stationId = selectedStation || stations?.[0]?.station_id || null;
   const { data: historicalData } = useStationData(stationId, 24);
 
-  // Auto-select first station
   useEffect(() => {
     if (!selectedStation && stations?.[0]) {
       setSelectedStation(stations[0].station_id);
     }
   }, [stations, selectedStation]);
 
-  // Load historical data
   useEffect(() => {
     if (historicalData && liveReadings.length === 0) {
       setLiveReadings(historicalData.slice(-20));
     }
   }, [historicalData, liveReadings.length]);
 
-  // Live polling every 3 seconds
   useEffect(() => {
     if (!isLive || !stationId) return;
     const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-    
+
     const interval = setInterval(async () => {
       try {
         const res = await fetch(`${API_URL}/api/v1/simulation/next-reading/${stationId}`);
@@ -63,7 +60,11 @@ export default function LiveMonitorPage() {
   }, [isLive, stationId]);
 
   const chartData = liveReadings.map((r) => ({
-    time: new Date(r.timestamp).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
+    time: new Date(r.timestamp).toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }),
     temperature: r.temperature,
     humidity: r.humidity,
     pressure: r.pressure,
@@ -87,7 +88,6 @@ export default function LiveMonitorPage() {
         <LiveIndicator isLive={isLive} />
       </PageHeader>
 
-      {/* Controls */}
       <div className="flex items-center gap-3 mb-6">
         <select
           value={stationId || ""}
@@ -126,7 +126,6 @@ export default function LiveMonitorPage() {
         </Button>
       </div>
 
-      {/* Latest readings */}
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         <StatCard
           label="T (degC)"
@@ -134,24 +133,11 @@ export default function LiveMonitorPage() {
           sublabel={latest ? new Date(latest.timestamp).toLocaleTimeString() : "Awaiting"}
           icon={<Activity className="w-4 h-4 text-amber-500" />}
         />
-        <StatCard
-          label="p (mbar)"
-          value={latest?.pressure ?? "—"}
-          sublabel="Station pressure"
-        />
-        <StatCard
-          label="rh (%)"
-          value={latest?.humidity ?? "—"}
-          sublabel="Relative humidity"
-        />
+        <StatCard label="p (mbar)" value={latest?.pressure ?? "—"} sublabel="Station pressure" />
+        <StatCard label="rh (%)" value={latest?.humidity ?? "—"} sublabel="Relative humidity" />
       </div>
 
-      {/* Live chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="panel"
-      >
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="panel">
         <div className="panel-header">
           <div className="flex items-center gap-3">
             <span className="font-serif font-semibold">Streaming series</span>
