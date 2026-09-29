@@ -17,6 +17,7 @@ import {
   Database,
   Settings,
   Satellite,
+  Brain,
 } from "lucide-react";
 
 export function Sidebar() {
@@ -47,22 +48,7 @@ export function Sidebar() {
         { href: "/satellite", label: t("nav.satellite"), icon: Satellite },
       ],
     },
-    {
-      label: t("nav.watch"),
-      items: [
-        { href: "/anomalies", label: t("nav.anomalies"), icon: AlertTriangle },
-        { href: "/alerts", label: t("nav.alerts"), icon: Bell },
-        { href: "/sensor-health", label: t("nav.sensorHealth"), icon: HeartPulse },
-      ],
-    },
-    {
-      label: t("nav.science"),
-      items: [
-        { href: "/analytics", label: t("nav.analytics"), icon: BarChart3 },
-        { href: "/ai-insights", label: t("nav.aiInsights"), icon: Sparkles },
-        { href: "/models", label: t("nav.models"), icon: Box },
-      ],
-    },
+    
     {
       label: t("nav.science"),
       items: [
