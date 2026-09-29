@@ -149,6 +149,36 @@ export interface SatelliteOverview {
   }>;
 }
 
+// ============ XAI TYPES ============
+export interface XAIExplanation {
+  station_id: string;
+  index: number;
+  timestamp: string;
+  verdict: string;
+  severity: string;
+  anomaly_score: number;
+  shap_values: Array<{
+    feature: string;
+    current_value: number | null;
+    baseline: number | null;
+    shap_value: number;
+    z_score?: number;
+    direction: string;
+    impact: string;
+    explanation: string;
+  }>;
+  counterfactuals: Array<{
+    feature: string;
+    current: number;
+    suggested: number;
+    impact: string;
+  }>;
+  baseline_window: {
+    size: number;
+    center_index: number;
+  };
+}
+
 // ============ REQUEST HELPER ============
 const BASE_HEADERS = {
   "Content-Type": "application/json",
@@ -156,8 +186,9 @@ const BASE_HEADERS = {
 };
 
 async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
+  // 90-second timeout for Render cold starts
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 70000); // 70s for cold starts
+  const timeoutId = setTimeout(() => controller.abort(), 90000);
 
   try {
     const response = await fetch(`${API_URL}${endpoint}`, {
@@ -178,9 +209,12 @@ async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
 export const api = {
   // Health
   getHealth: () =>
-    request<{ status: string; stations_trained: number; groq_configured: boolean }>(
-      "/health"
-    ),
+    request<{
+      status: string;
+      stations_trained: number;
+      groq_configured: boolean;
+      version: string;
+    }>("/health"),
 
   // Stations
   getStations: () => request<Station[]>("/api/v1/stations"),
@@ -191,8 +225,7 @@ export const api = {
   // Anomalies
   getAnomalies: (limit = 50) =>
     request<Anomaly[]>(`/api/v1/anomalies?limit=${limit}`),
-  getStats: () =>
-    request<DashboardStats>("/api/v1/anomalies/stats/summary"),
+  getStats: () => request<DashboardStats>("/api/v1/anomalies/stats/summary"),
   getAnomalyDetail: (stationId: string, index: number) =>
     request<AnomalyDetail>(`/api/v1/anomalies/${stationId}/${index}`),
 
@@ -210,7 +243,7 @@ export const api = {
   getChatbotStatus: () =>
     request<{ configured: boolean; model: string }>("/api/v1/chatbot/status"),
 
-  // ============ SATELLITE ============
+  // Satellite
   getSatelliteSources: () =>
     request<{ sources: SatelliteSource[] }>("/api/v1/satellite/sources"),
 
@@ -219,4 +252,19 @@ export const api = {
 
   getSatelliteStation: (stationId: string) =>
     request<SatelliteStation>(`/api/v1/satellite/station/${stationId}`),
+
+  // ============ XAI ============
+  getXAIExplanation: (stationId: string, index: number) =>
+    request<XAIExplanation>(`/api/v1/xai/explain/${stationId}/${index}`),
+
+  // ============ SIMULATION ============
+  getNextReading: (stationId: string) =>
+    request<{
+      timestamp: string;
+      temperature: number;
+      pressure: number;
+      humidity: number;
+      is_anomaly: boolean;
+      anomaly_type: string | null;
+    }>(`/api/v1/simulation/next-reading/${stationId}`),
 };

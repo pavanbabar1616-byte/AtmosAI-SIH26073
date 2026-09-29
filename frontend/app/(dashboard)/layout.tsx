@@ -1,16 +1,21 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { BackendStatusBanner } from "@/components/shared/BackendStatusBanner";
 import { TopBar } from "@/components/layout/TopBar";
 import { ChatWidget } from "@/components/shared/ChatWidget";
+import { BackendWakeTimer } from "@/components/shared/BackendWakeTimer";
 import { useAuthStore } from "@/stores/authStore";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const [backendReady, setBackendReady] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -20,7 +25,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-muted-foreground font-mono text-sm">
           Redirecting to sign in...
         </div>
@@ -28,11 +33,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     );
   }
 
+  // First-load: full-page overlay until backend is ready
+  if (!backendReady) {
+    return <BackendWakeTimer variant="overlay" onReady={() => setBackendReady(true)} />;
+  }
+
   return (
     <div className="flex min-h-screen bg-background">
-       <BackendStatusBanner />
+      {/* Banner mode for subsequent cold starts (page navigations) */}
+      <BackendWakeTimer variant="banner" />
+
       <Sidebar />
-      
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar />
         <main className="flex-1 px-8 py-8 overflow-x-hidden grid-pattern">
