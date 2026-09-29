@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { StatCard } from "@/components/shared/StatCard";
 import { useStats } from "@/hooks/useStations";
 import { SkeletonList } from "@/components/shared/Skeleton";
+import { StationMap } from "@/components/dashboard/StationMap";
 
 export default function DashboardPage() {
   const { data: stats, isLoading } = useStats();
@@ -147,7 +148,7 @@ export default function DashboardPage() {
               </div>
             </motion.div>
           </div>
-
+          <StationMap stations={stats.station_health} />
           {/* Station Health Table */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -64,6 +64,15 @@ export function Sidebar() {
       ],
     },
     {
+      label: t("nav.science"),
+      items: [
+        { href: "/analytics", label: t("nav.analytics"), icon: BarChart3 },
+        { href: "/xai", label: "XAI Insights", icon: Brain },
+        { href: "/ai-insights", label: t("nav.aiInsights"), icon: Sparkles },
+        { href: "/models", label: t("nav.models"), icon: Box },
+      ],
+    },
+    {
       label: t("nav.ops"),
       items: [
         { href: "/datasets", label: t("nav.datasets"), icon: Database },

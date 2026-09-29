@@ -7,6 +7,8 @@ from .api.v1 import stations, anomalies, chatbot, satellite
 from .services.anomaly_detector import train_station_model, _models
 from .core.config import settings
 print(f"DEBUG: GROQ key loaded: {settings.GROQ_API_KEY[:10]}... (length: {len(settings.GROQ_API_KEY)})")
+from .api.v1 import stations, anomalies, chatbot, satellite, simulation, xai
+app.include_router(xai.router, prefix="/api/v1")
 
 app = FastAPI(
     title="AtmosAi — SIH26073",
