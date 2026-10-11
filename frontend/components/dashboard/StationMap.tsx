@@ -42,11 +42,11 @@ export function StationMap({ stations }: StationMapProps) {
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 1000,
+            scale: 900,
             center: [82, 22],
           }}
           width={800}
-          height={700}
+          height={750}
           style={{
             width: "100%",
             height: "auto",
@@ -60,14 +60,10 @@ export function StationMap({ stations }: StationMapProps) {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill="rgba(217, 119, 6, 0.12)"
-                    stroke="rgba(217, 119, 6, 0.6)"
-                    strokeWidth={0.8}
-                    style={{
-                      default: { outline: "none" },
-                      hover: { fill: "rgba(217, 119, 6, 0.2)", outline: "none" },
-                      pressed: { outline: "none" },
-                    }}
+                    fill="rgba(30, 41, 59, 0.5)"
+                    stroke="rgba(217, 119, 6, 0.8)"
+                    strokeWidth={0.6}
+                    style={{ outline: "none" } as any}
                   />
                 ))
               }
@@ -83,7 +79,7 @@ export function StationMap({ stations }: StationMapProps) {
                   key={s.station_id}
                   coordinates={[s.lon, s.lat]}
                   onClick={() => router.push(`/stations/${s.station_id}`)}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer" } as any}
                 >
                   <motion.circle
                     r={6}
@@ -96,14 +92,15 @@ export function StationMap({ stations }: StationMapProps) {
                       delay: i * 0.08,
                     }}
                   />
-                  <circle r={4} fill={color} stroke="#0a0a0a" strokeWidth={1} />
+                  <circle r={4.5} fill={color} stroke="#0a0a0a" strokeWidth={1.2} />
                   <text
                     textAnchor="middle"
-                    y={-9}
+                    y={-10}
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: 7,
-                      fill: "#94a3b8",
+                      fontWeight: 600,
+                      fill: "#e2e8f0",
                       pointerEvents: "none",
                     }}
                   >
@@ -115,16 +112,18 @@ export function StationMap({ stations }: StationMapProps) {
           </ZoomableGroup>
         </ComposableMap>
 
-        {/* Legend */}
         <div className="absolute bottom-4 left-4 panel p-3 flex items-center gap-4 text-xs font-mono">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" /> ≥95%
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>≥95%</span>
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-amber-500" /> 90–95%
+            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <span>90–95%</span>
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-red-500" /> &lt;90%
+            <span className="w-2 h-2 rounded-full bg-red-500" />
+            <span>&lt;90%</span>
           </span>
         </div>
 
